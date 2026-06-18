@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class DecimalToBinary {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a decimal number: ");
+        int decimalNum = scanner.nextInt();
+        
+        String binaryResult = convertToBinary(decimalNum);
+        System.out.println("Binary equivalent: " + binaryResult);
+        
+        scanner.close();
+    }
+
+    public static String convertToBinary(int num) {
+        // Edge case for zero
+        if (num == 0) {
+            return "0";
+        }
+        
+        StringBuilder binary = new StringBuilder();
+        
+        // Loop runs until the quotient becomes 0
+        while (num > 0) {
+            int remainder = num % 2;      // Get the last binary digit (0 or 1)
+            binary.insert(0, remainder);  // Prepend the remainder to keep correct order
+            num = num / 2;                // Divide the number by 2
+        }
+        
+        return binary.toString();
+    }
+}
