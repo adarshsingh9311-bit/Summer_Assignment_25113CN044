@@ -1,0 +1,32 @@
+
+import java.math.BigInteger;
+ import java.util.Scanner;
+
+public class  recursionFactorial {
+    
+    public static void main(String[] args) {
+          try (Scanner scanner = new Scanner(System.in)) {
+            int n = scanner.nextInt();
+              if (n < 0) {
+                System.out.println("Factorial is not defined for negative numbers.");
+            } else {
+                
+            BigInteger result = factorial(n);
+             System.out.println("Factorial of " + n + " is: " + result);
+        }
+    }
+    }
+    // big integer is to stop overflow of the code 
+    public static BigInteger factorial(int n){
+
+        if(n==0 || n==1){
+            return BigInteger.ONE;
+        }
+         BigInteger currentNum = BigInteger.valueOf(n);
+        
+        // Recursive case: n * factorial(n - 1)
+        return currentNum.multiply(factorial(n - 1)); 
+    }
+
+}
+
